@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   DRIFT DESIGN TOKENS
+   ========================================================= */
+
+:root {
+  --bg: #f5f5f2;
+  --surface: #ffffff;
+  --surface-soft: #f8f8f6;
+  --surface-hover: #f1f1ee;
+
+  --text: #181818;
+  --text-secondary: #656565;
+  --text-muted: #999994;
+
+  --border: #e5e5e1;
+  --border-soft: #ededeb;
+
+  --accent: #171717;
+  --accent-hover: #2b2b2b;
+  --accent-soft: #eeeeeb;
+
+  --success: #3f7d58;
+  --danger: #b64b4b;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html {
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+  overflow: visible;
+}
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  background: #deded9;
+  color: var(--text);
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d5d5d0 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #d5d5d0;
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #c5c5bf;
+}
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.drift-input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.drift-input::placeholder {
+  color: var(--text-muted);
+}
+
+.drift-input:focus {
+  border-color: #bdbdb7;
+  box-shadow: 0 0 0 4px rgba(23, 23, 23, 0.05);
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.drift-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 44px;
+  padding: 0 18px;
+
+  border-radius: 14px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    opacity 160ms ease;
+}
+
+.drift-button:hover {
+  transform: translateY(-1px);
+}
+
+.drift-button:active {
+  transform: translateY(0);
+}
+
+.drift-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}
+
+.drift-primary {
+  background: var(--accent);
+  color: #ffffff;
+  border: 1px solid var(--accent);
+}
+
+.drift-primary:hover {
+  background: var(--accent-hover);
+}
+
+.drift-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.drift-secondary:hover {
+  background: var(--surface-hover);
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.drift-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.04);
+}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+.drift-fade {
+  animation: driftFade 500ms ease both;
+}
+
+.drift-up {
+  animation: driftUp 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.drift-scale {
+  animation: driftScale 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.drift-pulse {
+  animation: driftPulse 2s ease-in-out infinite;
+}
+
+@keyframes driftFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes driftUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes driftScale {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes driftPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
